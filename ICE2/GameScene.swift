@@ -13,7 +13,7 @@ class GameScene: SKScene
     var ocean2: Ocean?
     var player: Player?
     var island: Island?
-    var cloud: Cloud?
+    var clouds: [Cloud] = []
     
     override func sceneDidLoad()
     {
@@ -43,10 +43,13 @@ class GameScene: SKScene
         island = Island()
         addChild(island!)
         
-        //  add cloud to scene
-        cloud = Cloud()
-        addChild(cloud!)
-            
+        //  add 3 cloud to scene
+        for _ in 0...2
+        {
+            let cloud = Cloud()
+            clouds.append(cloud)
+            addChild(cloud)
+        }
 
     }
     
@@ -91,6 +94,12 @@ class GameScene: SKScene
         ocean2?.Update()
         player?.Update()
         island?.Update()
-        cloud?.Update()
+        
+        // update each cloud in cloud array
+        for cloud in clouds
+        {
+            cloud.Update()
+        }
+        
     }
 }
