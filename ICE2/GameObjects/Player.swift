@@ -18,7 +18,7 @@ class Player : GameObject
     //Override Livecycle
     override func Start()
     {
-        zPosition = 2
+        zPosition = Layer.plane.rawValue
         Reset()
     }
     
